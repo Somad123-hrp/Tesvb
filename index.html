@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Habibih Store</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .payment-method {
+            margin-bottom: 25px;
+        }
+
+        .payment-method h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .payment-option:hover {
+            border-color: #8f94fb;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-option.active {
+            border-color: #4e54c8;
+            background-color: rgba(78, 84, 200, 0.05);
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .dana-icon {
+            background-color: #0080ff;
+        }
+
+        .gopay-icon {
+            background-color: #00aa13;
+        }
+
+        .payment-details {
+            flex-grow: 1;
+        }
+
+        .payment-details h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .payment-details p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .copy-btn {
+            background-color: #4e54c8;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #3a3fa0;
+        }
+
+        .instructions {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .instructions h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Responsif */
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .payment-option {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PAYMENT HABIBIH STORE</h1>
+            <p>Silakan pilih metode pembayaran yang Anda inginkan</p>
+        </div>
+        
+        <div class="content">
+            <div class="payment-method">
+                <h2>Pilih Metode Pembayaran</h2>
+                
+                <div class="payment-option" id="dana-option">
+                    <div class="payment-icon dana-icon">
+                        D
+                    </div>
+                    <div class="payment-details">
+                        <h3>DANA</h3>
+                        <p>085135366878</p>
+                        <p>Atas Nama: HABIBIN HARAHAP</p>
+                    </div>
+                    <button class="copy-btn" data-number="085135366878">Salin</button>
+                </div>
+                
+                <div class="payment-option" id="gopay-option">
+                    <div class="payment-icon gopay-icon">
+                        G
+                    </div>
+                    <div class="payment-details">
+                        <h3>GOPAY</h3>
+                        <p>085169123955</p>
+                        <p>Atas Nama: HABIBIH HARAHAP</p>
+                    </div>
+                    <button class="copy-btn" data-number="085169123955">Salin</button>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>Cara Pembayaran:</h3>
+                <ol>
+                    <li>Pilih metode pembayaran yang diinginkan</li>
+                    <li>Klik tombol "Salin" untuk menyalin nomor</li>
+                    <li>Buka aplikasi pembayaran di ponsel Anda</li>
+                    <li>Tempel nomor yang telah disalin</li>
+                    <li>Lakukan transfer sesuai dengan jumlah pembayaran</li>
+                    <li>Simpan bukti transfer untuk konfirmasi</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Terima kasih telah berbelanja di Habibih Store</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menyalin nomor ke clipboard
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const number = this.getAttribute('data-number');
+                navigator.clipboard.writeText(number).then(() => {
+                    // Mengubah teks tombol sementara
+                    const originalText = this.textContent;
+                    this.textContent = 'Tersalin!';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '#4e54c8';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Gagal menyalin: ', err);
+                });
+            });
+        });
+
+        // Efek hover pada opsi pembayaran
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Hapus kelas active dari semua opsi
+                document.querySelectorAll('.payment-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Tambahkan kelas active ke opsi yang diklik
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
